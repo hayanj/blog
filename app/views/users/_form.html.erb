@@ -1,32 +1,34 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="container row justify-content-center">
+  <div class= "col-10">
+    <%= render 'shared/errors', obj:@user %>
+    <%= form_with(model:@user, class: "shadow p-3 mb-3 bg-black rounded", local: true) do |f| %>
+      <div class="form-group row">
+        <%= f.label :username, class: "col-2 col-form-label text-light" %>
+        <div class ="col-10">
+          <%= f.text_field :username, class: "form-control", placeholder: "Enter a username" %>
+        </div>
+      </div>
+      <br>
+      <div class="form-group row mb-2">
+        <%= f.label :email, class: "col-2 col-form-label text-white" %>
+        <div class ="col-10">
+          <%= f.email_field :email, class: "form-control", placeholder: "Enter your email address"  %>
+        </div>
+      </div>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="form-group row mb-2">
+        <%= f.label :password, class: "col-2 col-form-label text-white" %>
+        <div class ="col-10">
+          <%= f.password_field :password, class: "form-control", placeholder: "Enter a password"  %>
+        </div>
+      </div>
 
-  <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username %>
+      <div class="form-group row justify-content-center">
+        <%= f.submit "Sign up", class: "btn btn-outline-light btn-lg col-3"%>
+      </div>
+    <% end %>
   </div>
-
-  <div>
-    <%= form.label :string,, style: "display: block" %>
-    <%= form.text_field :string, %>
+  <div class="mb-3 text-center">
+    <%= link_to "Back to articles", articles_path, class: "text-black"%>
   </div>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
