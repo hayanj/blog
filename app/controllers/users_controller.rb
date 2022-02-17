@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @articles = @user.articles
   end
 
   # GET /users/new
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    @user = User.new(user_params)
+
     if @user.save
       flash[:notice] = "Welcome to the blog #{@user.username}, you have successfully signed up!"
       redirect_to articles_path
