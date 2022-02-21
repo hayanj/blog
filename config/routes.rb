@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories, except: [:destroy]
   resources :users, except: [:new]
   resources :articles
   root 'pages#home'
