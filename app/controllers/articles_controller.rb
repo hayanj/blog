@@ -40,7 +40,6 @@ class ArticlesController < ApplicationController
       else
         render 'edit'
       end
-    end
   end
 
   # DELETE /articles/1 or /articles/1.json
